@@ -5,12 +5,11 @@
 ==============================================
 ============================================== 
 */
+//upbutton
 const upButton = document.querySelector(".up-button");
-const upButtonColor = document.querySelector(".up-button > svg > rect");
-const upButtonLogoColor = document.querySelector(".up-button > svg > path");
 document.querySelector(".up-button").style.display = "none";
 window.addEventListener('scroll', () => {
-    if (document.querySelector('html').scrollTop < 100 ) {
+    if (document.querySelector('html').scrollTop < 100) {
         document.querySelector(".up-button").style.display = "none";
     }
     else {
@@ -18,16 +17,7 @@ window.addEventListener('scroll', () => {
     }
 });
 upButton.onclick = function() {window.scroll({top: 0, left: 0, behavior: 'smooth'});}
-if (true) {
-    upButton.onmouseover = function () {
-        upButtonColor.setAttribute('fill', "#7A3EFF")
-        upButtonLogoColor.setAttribute('fill', "white")
-    }
-    upButton.onmouseout = function () {
-        upButtonColor.setAttribute('fill', "#fff")
-        upButtonLogoColor.setAttribute('fill', "#333333")
-    }
-}
+
 /*
 ============================================== 
 ==============================================
@@ -35,11 +25,11 @@ if (true) {
 ==============================================
 ============================================== 
 */
+// download Button
 const pcDownload = document.querySelector('.pc-download');
 const pcMenu = document.querySelector('.pc-download > nav');
 const pcButton = document.querySelector('.pc-download > button');
 const pcMenuExit = document.querySelector(".pc-menu-exit > button");
-
 pcDownload.onclick = function() {
     pcMenu.classList.add("pc-active");
     pcButton.classList.add("pc-active");
@@ -62,23 +52,36 @@ pcMenuExit.addEventListener('click', function() {
 ==============================================
 ============================================== 
 */
+// menu
 const mobilSideMenu = document.querySelector(".head > div");
 const mobilSideMenuBtn = document.querySelector(".head > button");
 const mobilSideExit = document.querySelector(".head > div > div > button");
 const bodyNoWork = document.querySelector("body");
-const dontShowUpBtn = document.querySelector(".up-button")
-
+const mobileBeack = document.querySelector(".mobile-back");
 mobilSideMenuBtn.onclick = function() {
     mobilSideMenu.classList.toggle("mobile-active");
     bodyNoWork.classList.toggle("mobile-active");
-    upButton.classList.toggle("mobile-active")
-    if (upButton.classList.contains("mobile-active")) {
+    mobileBeack.classList.add("mobile-active");
+    upButton.classList.add("mobile-active");
+    if (upButton.classList.contains("mobile-active") == true) {
         document.querySelector(".up-button").style.display = "none";
     }
 }
 mobilSideExit.onclick = function() {
-    document.querySelector(".up-button").style.display = "block";
     mobilSideMenu.classList.remove("mobile-active");
     bodyNoWork.classList.remove("mobile-active");
-    upButton.classList.remove("mobile-active")
+    mobileBeack.classList.remove("mobile-active");
+    upButton.classList.remove("mobile-active");
+    if (upButton.classList.contains("mobile-active") != true && document.querySelector('html').scrollTop > 100) {
+        document.querySelector(".up-button").style.display = "block";
+    }
 }
+
+// info menu
+const mobileInfoClick = document.querySelector(".info-side > div > svg");
+const mobileInfoMeun = document.querySelector(".info-side > ul");
+
+mobileInfoClick.addEventListener('click', function() {
+    mobileInfoClick.classList.toggle("mobile-active");
+    mobileInfoMeun.classList.toggle("mobile-active");
+})
