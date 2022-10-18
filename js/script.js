@@ -18,6 +18,23 @@ window.addEventListener('scroll', () => {
 });
 upButton.onclick = function() {window.scroll({top: 0, left: 0, behavior: 'smooth'});}
 
+//post
+const extraBtn = document.querySelector(".post-table button");
+const post = document.querySelectorAll(".how-many li")
+
+for(let i = 0; i < post.length; i++) {
+    if (i < 9) {
+        extraBtn.style.display = 'none'
+    }
+    if (i > 9) {
+        post[i].style.display = 'none';
+        extraBtn.style.display = 'inline-block'
+    }
+    extraBtn.addEventListener('click', function(){
+        post[i].style.display = 'list-item';
+        extraBtn.style.display = 'none'
+    })
+}
 /*
 ============================================== 
 ==============================================
@@ -85,3 +102,15 @@ mobileInfoClick.addEventListener('click', function() {
     mobileInfoClick.classList.toggle("mobile-active");
     mobileInfoMeun.classList.toggle("mobile-active");
 })
+
+// qna select bar
+const qnaBarBtn = document.querySelector(".qna-nav div:nth-of-type(1)")
+const qnaBar = document.querySelector(".qna-nav > div:nth-of-type(2)")
+
+qnaBarBtn.addEventListener('click', function() {
+    qnaBarBtn.classList.toggle("mobile-active");
+    qnaBar.classList.toggle("mobile-active");
+})
+
+//remove href
+qnaBar.removeAttribute("herf")

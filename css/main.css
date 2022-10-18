@@ -6,7 +6,7 @@
 ============================================== 
 */
 .head > div > nav > ul > li:nth-child(1) {border-bottom: 3px solid #000;}
-.head > div > nav > ul > li:nth-child(1) > a{font-weight: bold;color: #000;}
+.head > div > nav > ul > li:nth-child(1) > a{font-weight: bold; color: #000;}
 
 /* 
 ==============================================
