@@ -75,7 +75,11 @@ header {background-color: rgb(223, 225, 233);}
     padding: 20px 35px;
     display: inline-block;
 }
-.qna-nav div:nth-of-type(1) > a {
+.qna-nav div:nth-of-type(1) > a.active {
+    font-weight: bold; color: #000;
+    border-bottom: 2px solid #000;
+}
+.qna-nav a.active {
     font-weight: bold; color: #000;
     border-bottom: 2px solid #000;
 }
@@ -188,6 +192,16 @@ header {background-color: rgb(223, 225, 233);}
         border: 1px solid rgb(221, 221, 221);
     }
     .qna-nav div:nth-of-type(1) > a {
+        font-weight: 400; color: none;
+        border-bottom: 1px solid rgb(221, 221, 221);
+        position: relative;
+    }
+    .qna-nav div:nth-of-type(1) > a.active {
+        font-weight: 400; color: none;
+        border-bottom: 1px solid rgb(221, 221, 221);
+        position: relative;
+    }
+    .qna-nav a.active {
         font-weight: 400; color: none;
         border-bottom: 1px solid rgb(221, 221, 221);
         position: relative;
@@ -328,6 +342,16 @@ header {background-color: rgb(223, 225, 233);}
         border-bottom: 1px solid rgb(221, 221, 221);
         position: relative;
     }
+    .qna-nav div:nth-of-type(1) > a.active {
+        font-weight: 400; color: none;
+        border-bottom: 1px solid rgb(221, 221, 221);
+        position: relative;
+    }
+    .qna-nav a.active {
+        font-weight: 400; color: none;
+        border-bottom: 1px solid rgb(221, 221, 221);
+        position: relative;
+    }
     .qna-nav div:nth-of-type(1) > a::after {
         content: '';
         width: 20px; height: 20px;
@@ -446,7 +470,11 @@ header {background-color: rgb(223, 225, 233);}
         padding: 20px 35px;
         display: inline-block;
     }
-    .qna-nav div:nth-of-type(1) > a {
+    .qna-nav div:nth-of-type(1) > a.active {
+        font-weight: bold; color: #000;
+        border-bottom: 2px solid #000;
+    }
+    .qna-nav a.active {
         font-weight: bold; color: #000;
         border-bottom: 2px solid #000;
     }

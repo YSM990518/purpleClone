@@ -1,7 +1,7 @@
 /*
 ============================================== 
 ==============================================
-                PC and Mobile
+                Up Button
 ==============================================
 ============================================== 
 */
@@ -18,27 +18,10 @@ window.addEventListener('scroll', () => {
 });
 upButton.onclick = function() {window.scroll({top: 0, left: 0, behavior: 'smooth'});}
 
-//post
-const extraBtn = document.querySelector(".post-table button");
-const post = document.querySelectorAll(".how-many li")
-
-for(let i = 0; i < post.length; i++) {
-    if (i < 9) {
-        extraBtn.style.display = 'none'
-    }
-    if (i > 9) {
-        post[i].style.display = 'none';
-        extraBtn.style.display = 'inline-block'
-    }
-    extraBtn.addEventListener('click', function(){
-        post[i].style.display = 'list-item';
-        extraBtn.style.display = 'none'
-    })
-}
 /*
 ============================================== 
 ==============================================
-                        PC
+                PC - Download
 ==============================================
 ============================================== 
 */
@@ -65,7 +48,7 @@ pcMenuExit.addEventListener('click', function() {
 /*
 ============================================== 
 ==============================================
-                    Mobile
+            Mobile Main menu
 ==============================================
 ============================================== 
 */
@@ -103,14 +86,495 @@ mobileInfoClick.addEventListener('click', function() {
     mobileInfoMeun.classList.toggle("mobile-active");
 })
 
-// qna select bar
-const qnaBarBtn = document.querySelector(".qna-nav div:nth-of-type(1)")
-const qnaBar = document.querySelector(".qna-nav > div:nth-of-type(2)")
+/*
+============================================== 
+==============================================
+                    Qna
+==============================================
+============================================== 
+*/
+//post
+const extraBtn = document.querySelector(".post-table button");
+const post = document.querySelectorAll(".how-many li");
 
-qnaBarBtn.addEventListener('click', function() {
-    qnaBarBtn.classList.toggle("mobile-active");
-    qnaBar.classList.toggle("mobile-active");
-})
+for(let i = 0; i < post.length; i++) {
+    if (i < 9) {
+        extraBtn.style.display = 'none';
+    }
+    if (i > 9) {
+        post[i].style.display = 'none';
+        extraBtn.style.display = 'inline-block';
+    }
+    extraBtn.addEventListener('click', function(){
+        post[i].style.display = 'list-item';
+        extraBtn.style.display = 'none';
+    })
+}
 
-//remove href
-qnaBar.removeAttribute("herf")
+//qna
+const qnaPostType1 = document.querySelectorAll(".log");
+const qnaPostType2 = document.querySelectorAll(".install");
+const qnaPostType3 = document.querySelectorAll(".run");
+const qnaPostType4 = document.querySelectorAll(".play");
+const qnaPostType5 = document.querySelectorAll(".lock");
+const qnaPostType6 = document.querySelectorAll(".payment");
+
+const qnaBtn = document.querySelector(".qna-nav div:nth-of-type(1)");
+const qnaMenu = document.querySelector(".qna-nav div:nth-of-type(2)");
+const mobilePostStop = document.querySelector("body");
+
+let idx = 0;
+const qna = document.querySelectorAll(".qna-nav a");
+
+var width = window.innerWidth;
+window.onresize = function() {
+    if(width < 992) {
+        qnaBtn.onclick = function() {
+            qnaBtn.classList.toggle("mobile-active");
+            qnaMenu.classList.toggle("mobile-active");
+            qna[0].textContent = "전체";
+        }
+        qna.forEach(function(btn, key) {
+            btn.onclick = function() {
+                qna[idx].classList.remove("active");
+                qna[key].classList.add("active");
+                idx = key;
+                if(qna[0].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "list-item";
+                        qnaPostType2[i].style.display = "list-item";
+                        qnaPostType3[i].style.display = "list-item";
+                        qnaPostType4[i].style.display = "list-item";
+                        qnaPostType5[i].style.display = "list-item";
+                        qnaPostType6[i].style.display = "list-item";
+                        for(let j = 0; j < post.length; j++) {
+                            if (j < 9) {
+                                extraBtn.style.display = 'none'
+                            }
+                            if (j > 9) {
+                                post[j].style.display = 'none';
+                                extraBtn.style.display = 'inline-block'
+                            }
+                            extraBtn.addEventListener('click', function(){
+                                post[j].style.display = 'list-item';
+                                extraBtn.style.display = 'none'
+                            })
+                        }
+                    }
+                }
+                if(qna[1].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "list-item";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                        qnaBtn.classList.remove("mobile-active");
+                        qnaMenu.classList.remove("mobile-active");
+                        mobilePostStop.classList.remove("mobile-active");
+                        qna[0].textContent = "로그인/계정";
+                    }
+                }
+                if(qna[2].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "list-item";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                        qnaBtn.classList.remove("mobile-active");
+                        qnaMenu.classList.remove("mobile-active");
+                        mobilePostStop.classList.remove("mobile-active");
+                        qna[0].textContent = "설치";
+                    }
+                }
+                if(qna[3].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "list-item";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                        qnaBtn.classList.remove("mobile-active");
+                        qnaMenu.classList.remove("mobile-active");
+                        mobilePostStop.classList.remove("mobile-active");
+                        qna[0].textContent = "실행";
+                    }
+                }
+                if(qna[4].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "list-item";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                        qnaBtn.classList.remove("mobile-active");
+                        qnaMenu.classList.remove("mobile-active");
+                        mobilePostStop.classList.remove("mobile-active");
+                        qna[0].textContent = "게임 플레이";
+                    }
+                }
+                if(qna[5].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "list-item";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                        qnaBtn.classList.remove("mobile-active");
+                        qnaMenu.classList.remove("mobile-active");
+                        mobilePostStop.classList.remove("mobile-active");
+                        qna[0].textContent = "화면 잠금";
+                    }
+                }
+                if(qna[6].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "list-item";
+                        extraBtn.style.display = 'none'
+                        qnaBtn.classList.remove("mobile-active");
+                        qnaMenu.classList.remove("mobile-active");
+                        qna[0].textContent = "결제";
+                    }
+                }
+            }
+        })
+    }
+    else if(width >= 992) {
+        qna.forEach(function(btn, key) {
+            btn.onclick = function() {
+                qna[idx].classList.remove("active");
+                qna[key].classList.add("active");
+                idx = key;
+                if(qna[0].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "list-item";
+                        qnaPostType2[i].style.display = "list-item";
+                        qnaPostType3[i].style.display = "list-item";
+                        qnaPostType4[i].style.display = "list-item";
+                        qnaPostType5[i].style.display = "list-item";
+                        qnaPostType6[i].style.display = "list-item";
+                        for(let j = 0; j < post.length; j++) {
+                            if (j < 9) {
+                                extraBtn.style.display = 'none'
+                            }
+                            if (j > 9) {
+                                post[j].style.display = 'none';
+                                extraBtn.style.display = 'inline-block'
+                            }
+                            extraBtn.addEventListener('click', function(){
+                                post[j].style.display = 'list-item';
+                                extraBtn.style.display = 'none'
+                            })
+                        }
+                    }
+                }
+                if(qna[1].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "list-item";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                    }
+                }
+                if(qna[2].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "list-item";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                    }
+                }
+                if(qna[3].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "list-item";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                    }
+                }
+                if(qna[4].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "list-item";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                    }
+                }
+                if(qna[5].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "list-item";
+                        qnaPostType6[i].style.display = "none";
+                        extraBtn.style.display = 'none'
+                    }
+                }
+                if(qna[6].classList.contains("active")) {
+                    for(let i = 0; i < post.length; i++) {
+                        qnaPostType1[i].style.display = "none";
+                        qnaPostType2[i].style.display = "none";
+                        qnaPostType3[i].style.display = "none";
+                        qnaPostType4[i].style.display = "none";
+                        qnaPostType5[i].style.display = "none";
+                        qnaPostType6[i].style.display = "list-item";
+                        extraBtn.style.display = 'none'
+                    }
+                }
+            }
+        })
+    }    
+}
+if(width < 992) {
+    qnaBtn.onclick = function() {
+        qnaBtn.classList.toggle("mobile-active");
+        qnaMenu.classList.toggle("mobile-active");
+        qna[0].textContent = "전체";
+    }
+    qna.forEach(function(btn, key) {
+        btn.onclick = function() {
+            qna[idx].classList.remove("active");
+            qna[key].classList.add("active");
+            idx = key;
+            if(qna[0].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "list-item";
+                    qnaPostType2[i].style.display = "list-item";
+                    qnaPostType3[i].style.display = "list-item";
+                    qnaPostType4[i].style.display = "list-item";
+                    qnaPostType5[i].style.display = "list-item";
+                    qnaPostType6[i].style.display = "list-item";
+                    for(let j = 0; j < post.length; j++) {
+                        if (j < 9) {
+                            extraBtn.style.display = 'none'
+                        }
+                        if (j > 9) {
+                            post[j].style.display = 'none';
+                            extraBtn.style.display = 'inline-block'
+                        }
+                        extraBtn.addEventListener('click', function(){
+                            post[j].style.display = 'list-item';
+                            extraBtn.style.display = 'none'
+                        })
+                    }
+                }
+            }
+            if(qna[1].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "list-item";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                    qnaBtn.classList.remove("mobile-active");
+                    qnaMenu.classList.remove("mobile-active");
+                    mobilePostStop.classList.remove("mobile-active");
+                    qna[0].textContent = "로그인/계정";
+                }
+            }
+            if(qna[2].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "list-item";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                    qnaBtn.classList.remove("mobile-active");
+                    qnaMenu.classList.remove("mobile-active");
+                    mobilePostStop.classList.remove("mobile-active");
+                    qna[0].textContent = "설치";
+                }
+            }
+            if(qna[3].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "list-item";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                    qnaBtn.classList.remove("mobile-active");
+                    qnaMenu.classList.remove("mobile-active");
+                    mobilePostStop.classList.remove("mobile-active");
+                    qna[0].textContent = "실행";
+                }
+            }
+            if(qna[4].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "list-item";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                    qnaBtn.classList.remove("mobile-active");
+                    qnaMenu.classList.remove("mobile-active");
+                    mobilePostStop.classList.remove("mobile-active");
+                    qna[0].textContent = "게임 플레이";
+                }
+            }
+            if(qna[5].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "list-item";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                    qnaBtn.classList.remove("mobile-active");
+                    qnaMenu.classList.remove("mobile-active");
+                    mobilePostStop.classList.remove("mobile-active");
+                    qna[0].textContent = "화면 잠금";
+                }
+            }
+            if(qna[6].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "list-item";
+                    extraBtn.style.display = 'none'
+                    qnaBtn.classList.remove("mobile-active");
+                    qnaMenu.classList.remove("mobile-active");
+                    qna[0].textContent = "결제";
+                }
+            }
+        }
+    })
+}
+else if(width >= 992) {
+    qna.forEach(function(btn, key) {
+        btn.onclick = function() {
+            qna[idx].classList.remove("active");
+            qna[key].classList.add("active");
+            idx = key;
+            if(qna[0].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "list-item";
+                    qnaPostType2[i].style.display = "list-item";
+                    qnaPostType3[i].style.display = "list-item";
+                    qnaPostType4[i].style.display = "list-item";
+                    qnaPostType5[i].style.display = "list-item";
+                    qnaPostType6[i].style.display = "list-item";
+                    for(let j = 0; j < post.length; j++) {
+                        if (j < 9) {
+                            extraBtn.style.display = 'none'
+                        }
+                        if (j > 9) {
+                            post[j].style.display = 'none';
+                            extraBtn.style.display = 'inline-block'
+                        }
+                        extraBtn.addEventListener('click', function(){
+                            post[j].style.display = 'list-item';
+                            extraBtn.style.display = 'none'
+                        })
+                    }
+                }
+            }
+            if(qna[1].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "list-item";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                }
+            }
+            if(qna[2].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "list-item";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                }
+            }
+            if(qna[3].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "list-item";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                }
+            }
+            if(qna[4].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "list-item";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                }
+            }
+            if(qna[5].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "list-item";
+                    qnaPostType6[i].style.display = "none";
+                    extraBtn.style.display = 'none'
+                }
+            }
+            if(qna[6].classList.contains("active")) {
+                for(let i = 0; i < post.length; i++) {
+                    qnaPostType1[i].style.display = "none";
+                    qnaPostType2[i].style.display = "none";
+                    qnaPostType3[i].style.display = "none";
+                    qnaPostType4[i].style.display = "none";
+                    qnaPostType5[i].style.display = "none";
+                    qnaPostType6[i].style.display = "list-item";
+                    extraBtn.style.display = 'none'
+                }
+            }
+        }
+    })
+}
+console.log(window.innerWidth);
