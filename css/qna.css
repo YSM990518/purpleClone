@@ -6,8 +6,7 @@
                     Header
 ============================================== 
 */
-.head > div > nav > ul > li:nth-of-type(4) {border-bottom: 3px solid #000;}
-.head > div > nav > ul > li:nth-of-type(4) > a{font-weight: bold;color: #000;}
+
 
 /* 
 ==============================================
@@ -27,13 +26,11 @@
 ==============================================
 */
 @media (max-width: 767px) {
-    /* 
+/* 
 ==============================================
                     Header
 ============================================== 
-    */
-    .head > div > nav > ul > li:nth-child(4) {border-bottom: none}
-    .head > div > nav > ul > li:nth-child(4) > a{font-weight: bold ;color: #000;}
+*/
 
 /* 
 ==============================================
@@ -54,13 +51,11 @@
 ==============================================
 */
 @media (min-width: 768px) and (max-width: 991px) {
-    /* 
+/* 
 ==============================================
                     Header
 ============================================== 
-    */
-    .head > div > nav > ul > li:nth-child(4) {border-bottom: none}
-    .head > div > nav > ul > li:nth-child(4) > a{font-weight: bold ;color: #000;}
+*/
 
 /* 
 ==============================================

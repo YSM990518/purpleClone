@@ -5,8 +5,6 @@
                     Header
 ============================================== 
 */
-.head > div > nav > ul > li:nth-child(1) {border-bottom: 3px solid #000;}
-.head > div > nav > ul > li:nth-child(1) > a{font-weight: bold; color: #000;}
 
 /* 
 ==============================================
@@ -76,7 +74,7 @@
 .index {margin-top: 50px;}
 .index-info {
     width: 100%; height: 100%;
-    padding: 60px 20px 10px; margin-top: 10px;
+    padding: 100px 20px 30px; margin-top: 10px;
     background-color: #f8f8f8;
     display: flex;
     justify-content: center;
@@ -109,10 +107,13 @@
     font-size: 1rem; font-weight: 400;
     color: #333;
     max-width: 230px;
-    padding: 5px 0 5px 10px;
+    padding: 10px 0 10px 10px;
 }
 .side-menu a:nth-child(5) svg {margin-left: 3px;}
 .side-menu a:nth-child(5) {display: flex; align-items: center;}
+@media (min-width: 1800px) {
+    .side-menu {display: none;}
+}
 
 /*
 ==============================================
@@ -127,8 +128,6 @@
                     Header
 ============================================== 
 */
-    .head > div > nav > ul > li:nth-child(1) {border-bottom: none}
-    .head > div > nav > ul > li:nth-child(1) > a{font-weight: bold ;color: #000;}
 
 /* 
 ==============================================
@@ -155,8 +154,8 @@
         background-position: -100px 0px;
     }
     .info p {font: 2rem; font-weight: 400; color: rgb(102, 102, 102); white-space: pre-line;}
-    .info > div {margin-top: 125px;}
-    .info > div p {font-size: 1.25rem; font-weight: 700; color: #333; margin-bottom: 40px;}
+    .info > div {margin-top: 100px;}
+    .info > div p {font-size: 1.5vh; font-weight: 700; color: #333; margin-bottom: 40px;}
     .info > div > div {position: relative;}
     .info > div > div > div {
         width: 100%; height: 10rem;
@@ -286,8 +285,6 @@
                         Header
 ============================================== 
 */
-    .head > div > nav > ul > li:nth-child(1) {border-bottom: none}
-    .head > div > nav > ul > li:nth-child(1) > a{font-weight: bold ;color: #000;}
     
 /* 
 ==============================================
@@ -445,8 +442,6 @@
                     Header
 ============================================== 
 */
-    .head > div > nav > ul > li:nth-child(1) {border-bottom: 3px solid #000;}
-    .head > div > nav > ul > li:nth-child(1) > a{font-weight: bold;color: #000;}
 
 /* 
 ==============================================
@@ -516,7 +511,7 @@
     .index {margin-top: 50px;}
     .index-info {
         width: 100%; height: 100%;
-        padding: 60px 20px 10px; margin-top: 10px;
+        padding: 100px 20px 30px; margin-top: 10px;
         background-color: #f8f8f8;
         display: flex;
         justify-content: center;
