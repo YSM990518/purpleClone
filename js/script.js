@@ -23,7 +23,7 @@ upButton.onclick = function() {window.scroll({top: 0, left: 0, behavior: 'smooth
 ==============================================
                 PC - Download
 ==============================================
-============================================== 
+==============================================
 */
 // download Button
 const pcDownload = document.querySelector('.pc-download');
@@ -89,7 +89,7 @@ mobileInfoClick.addEventListener('click', function() {
 /*
 ============================================== 
 ==============================================
-        Main Menu and Main PAge Scroll
+        Main Menu and Main Page Scroll
 ==============================================
 ============================================== 
 */
@@ -177,4 +177,11 @@ for(let i = 0; i < post.length; i++) {
     })
 }
 
-//qna
+//qna navi mobile
+const qnaMobileBtn = document.querySelector(".qna-nav div:nth-of-type(1)");
+const qnaMobileMenu = document.querySelector(".qna-nav div:nth-of-type(2)");
+
+qnaMobileBtn.addEventListener('click', () => {
+    qnaMobileBtn.classList.toggle("mobile-active");
+    qnaMobileMenu.classList.toggle("mobile-active");
+});
