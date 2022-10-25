@@ -159,24 +159,6 @@ subMenuBtn.forEach(function(btn, key) {
 ==============================================
 ============================================== 
 */
-//post
-const extraBtn = document.querySelector(".post-table button");
-const post = document.querySelectorAll(".how-many li");
-
-for(let i = 0; i < post.length; i++) {
-    if (i < 9) {
-        extraBtn.style.display = 'none';
-    }
-    if (i > 9) {
-        post[i].style.display = 'none';
-        extraBtn.style.display = 'inline-block';
-    }
-    extraBtn.addEventListener('click', function(){
-        post[i].style.display = 'list-item';
-        extraBtn.style.display = 'none';
-    })
-}
-
 //qna navi mobile
 const qnaMobileBtn = document.querySelector(".qna-nav div:nth-of-type(1)");
 const qnaMobileMenu = document.querySelector(".qna-nav div:nth-of-type(2)");
@@ -185,3 +167,62 @@ qnaMobileBtn.addEventListener('click', () => {
     qnaMobileBtn.classList.toggle("mobile-active");
     qnaMobileMenu.classList.toggle("mobile-active");
 });
+
+//make qna post
+let qnaPosts = '';
+const qnaPost = document.querySelector(".how-many");
+fetch("./json/data.json")
+.then((str) => (str.json()))
+.then((data) => {
+    data.log.forEach(function(obj) {
+        qnaPosts += `<li class="log"><a href=""><strong>Q.</strong>${obj.inside}</a></li>`
+    });
+    data.install.forEach(function(obj) {
+        qnaPosts += `<li class="install"><a href=""><strong>Q.</strong>${obj.inside}</a></li>`
+    });
+    data.run.forEach(function(obj) {
+        qnaPosts += `<li class="run"><a href=""><strong>Q.</strong>${obj.inside}</a></li>`
+    });
+    data.play.forEach(function(obj) {
+        qnaPosts += `<li class="play"><a href=""><strong>Q.</strong>${obj.inside}</a></li>`
+    });
+    data.lock.forEach(function(obj) {
+        qnaPosts += `<li class="lock"><a href=""><strong>Q.</strong>${obj.inside}</a></li>`
+    });
+    data.payment.forEach(function(obj) {
+        qnaPosts += `<li class="payment"><a href=""><strong>Q.</strong>${obj.inside}</a></li>`
+    });
+    qnaPost.innerHTML = qnaPosts;
+
+    //post
+    const extraBtn = document.querySelector(".post-table button");
+    const post = document.querySelectorAll(".how-many li");
+    
+    for(let i = 0; i < post.length; i++) {
+        if (i < 9) {
+            extraBtn.style.display = 'none';
+        }
+        if (i > 9) {
+            post[i].style.display = 'none';
+            extraBtn.style.display = 'inline-block';
+        }
+        extraBtn.addEventListener('click', function(){
+            post[i].style.display = 'list-item';
+            extraBtn.style.display = 'none';
+        })
+    }
+
+    //qna navi no God plz no. no!!!!!!!!!!!!!!!!!
+    let count = 0;
+    const qnaBtn = document.querySelectorAll(".qna-nav a");
+    qnaBtn.forEach((ele, key) => {
+        ele.addEventListener('click', () => {
+            qnaBtn[count].classList.remove("active");
+            qnaBtn[key].classList.add("active");
+            count = key;
+        });
+    });
+});
+
+
+
