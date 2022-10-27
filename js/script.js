@@ -163,9 +163,13 @@ subMenuBtn.forEach(function(btn, key) {
 const qnaMobileBtn = document.querySelector(".qna-nav div:nth-of-type(1)");
 const qnaMobileMenu = document.querySelector(".qna-nav div:nth-of-type(2)");
 const qnaBtn = document.querySelectorAll(".qna-nav a");
+const navName = [];
+for(let i = 0; i < qnaBtn.length; i++) {
+    navName[i] = `${qnaBtn[i].textContent}`
+}
 
 qnaMobileBtn.addEventListener('click', () => {
-    if (window.matchMedia("(max-width: 992px)").matches) {
+    if (window.matchMedia("(max-width: 991px)").matches) {
         qnaMobileBtn.classList.toggle("mobile-active");
         qnaMobileMenu.classList.toggle("mobile-active");
     }
@@ -224,13 +228,26 @@ fetch("./json/data.json")
                 if(qnaBtn[key].classList.contains("active")){
                     qnaPosts = '';
                     qnaBtns(qnaBtn[key].className);
+                }
+                if(qnaBtn[0].classList.contains("active") == false){
                     qnaMobileBtn.classList.remove("mobile-active");
                     qnaMobileMenu.classList.remove("mobile-active");
                 }
+                let text1st = qnaBtn[0].textContent;
+                if(key > 0) {
+                    qnaBtn[0].textContent = `${navName[key]}`;
+                    qnaBtn[key].textContent = "전체";
+                    if(text1st != "전체") {
+                        qnaBtn[0].textContent = "전체"
+                        qnaBtn[key].textContent = `${navName[key]}`;
+                    }
+                }
+                console.log(navName[1])
             }
-        });
+        })
     });
 });
+
 
 
 
