@@ -138,7 +138,7 @@ menuBtn3.addEventListener('click', function() {
     }
 });
 //
-subMenuBtn.forEach(function(btn, key) {
+subMenuBtn.forEach(function(btn) {
     btn.addEventListener('click', function() {
         mobilSideMenu.classList.remove("mobile-active");
         bodyNoWork.classList.remove("mobile-active");
@@ -152,6 +152,44 @@ subMenuBtn.forEach(function(btn, key) {
         }
     });
 });
+
+/*
+============================================== 
+==============================================
+                Pc i800px menu
+==============================================
+============================================== 
+*/
+const sidePxHigh = document.querySelector(".side-menu");
+const sidePxA = document.querySelectorAll(".side-menu a");
+const mainInfo = document.querySelectorAll(".index-info");
+const cheackPoint = document.querySelector(".dragg-info");
+
+sidePxHigh.style.display = 'none';
+if (window.matchMedia("(min-width: 1800px)").matches) {
+    window.addEventListener('scroll', () => {
+        const showPoint = cheackPoint.offsetTop;
+        if(showPoint < document.querySelector('html').scrollTop) {
+            sidePxHigh.style.display = 'block';
+            sidePxA[0].classList.add("active");
+        }
+        else {
+            sidePxHigh.style.display = 'none'
+        }
+        let num = 0;
+        for(let i = 0; i < mainInfo.length; i++) {
+            if(mainInfo[i].offsetTop < document.querySelector('html').scrollTop) {
+                sidePxA[num].classList.remove("active");
+                sidePxA[i].classList.add("active");
+                num = i;
+            }
+            if(mainInfo[i].offsetTop > document.querySelector('html').scrollTop) {
+                sidePxA[i].classList.remove("active");
+            }
+        }
+    })
+}
+
 /*
 ============================================== 
 ==============================================
@@ -174,6 +212,7 @@ qnaMobileBtn.addEventListener('click', () => {
         qnaMobileMenu.classList.toggle("mobile-active");
     }
 });
+
 //make qna post
 let qnaPosts = '';
 const qnaPost = document.querySelector(".how-many");
