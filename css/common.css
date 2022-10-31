@@ -1,6 +1,4 @@
 @charset "utf-8";
-@import url(../js/script.js);
-
 /* 
 ==============================================
                 CSS Base
@@ -29,6 +27,12 @@ body {
     color: rgb(102, 102, 102);
 }
 
+/*
+==============================================
+==============================================
+                    PC
+==============================================
+==============================================
 /* 
 ==============================================
                     Header
@@ -40,7 +44,7 @@ header {
     background-color: #fff;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 9999;
 }
 .head {
     display: flex;
@@ -165,9 +169,11 @@ header {
     right: 5px;
     bottom: 55px;
     cursor: pointer;
+    z-index: 1;
 }
 .up-button:hover > svg rect {fill: #7A3EFF;}
 .up-button:hover > svg path {fill: #fff;}
+
 /* 
 ==============================================
                     Footer
@@ -182,14 +188,16 @@ header {
     margin-left: 20px;
 }
 /* not use to pc! */
-.foot a {
+footer a {
     width: 100%; height: 4rem;
     font-size: 1.5rem; font-weight: bold;
     color: #fff;
     background-color: #7a3eff;
-    display: flex; align-items: center; justify-content: center;
-    position: sticky;
+    position: fixed;
+    padding-top: 1rem;
+    text-align: center;
     left: 0; bottom: 0;
+    z-index: 99;
     display: none;
 }
 
@@ -218,7 +226,7 @@ header {
         background-color: #fff;
         position: fixed;
         top: 0;
-        z-index: 1;
+        z-index: 9999;
     }
     .head {
         padding: 10px 20px;
@@ -365,11 +373,14 @@ header {
         position: fixed;
         z-index: 3;
         right: 5px;
-        bottom: 55px;
+        bottom: 75px;
         cursor: pointer;
+        z-index: 1;
     }
     .up-button:hover > svg rect {fill: #fff;}
     .up-button:hover > svg path {fill: #333333;}
+
+
 /* 
 ==============================================
                     Footer
@@ -384,16 +395,17 @@ header {
         font-size: 0.5rem; font-weight: 400; color: rgb(153, 153, 153);
         margin-left: 10px;
     }
-    /* not use to pc! */
-    .foot a {
+    footer a {
         width: 100%; height: 4rem;
         font-size: 1.5rem; font-weight: bold;
         color: #fff;
         background-color: #7a3eff;
-        display: flex; align-items: center; justify-content: center;
-        position: sticky;
+        position: fixed;
+        padding-top: 1rem;
+        text-align: center;
         left: 0; bottom: 0;
-        display: none;
+        z-index: 99;
+        display: block;
     }
 }
 
@@ -422,7 +434,7 @@ header {
         background-color: #fff;
         position: fixed;
         top: 0;
-        z-index: 1;
+        z-index: 9999;
     }
     .head {
         padding: 10px 20px;
@@ -569,11 +581,13 @@ header {
         position: fixed;
         z-index: 3;
         right: 5px;
-        bottom: 55px;
+        bottom: 75px;
         cursor: pointer;
+        z-index: 1;
     }
     .up-button:hover > svg rect {fill: #fff;}
     .up-button:hover > svg path {fill: #333333;}
+
 /* 
 ==============================================
                     Footer
@@ -588,16 +602,16 @@ header {
         font-size: 0.5rem; font-weight: 400; color: rgb(153, 153, 153);
         margin-left: 10px;
     }
-    /* not use to pc! */
-    .foot a {
+    footer a {
         width: 100%; height: 4rem;
         font-size: 1.5rem; font-weight: bold;
         color: #fff;
         background-color: #7a3eff;
-        display: flex; align-items: center; justify-content: center;
-        position: sticky;
+        position: fixed;
+        padding-top: 1rem;
+        text-align: center;
         left: 0; bottom: 0;
-        display: none;
+        z-index: 99;
+        display: block;
     }
 }
-

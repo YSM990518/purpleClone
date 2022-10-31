@@ -1,21 +1,17 @@
-@import url(./common.css);
-@import url(./post-base.css);
-
-/* 
+/*
 ==============================================
-                    Header
-============================================== 
+==============================================
+                    PC
+==============================================
+==============================================
 */
-
-
 /* 
 ==============================================
                     Post
 ============================================== 
 */
-.post ul a{display: flex; justify-content: space-between;}
-.post ul p {font-size: 1rem; font-weight: 400; color: rgb(153, 153, 153); padding-left: 25px;}
-
+.post .news a {display: flex; justify-content: space-between;}
+.post .news p {font-size: 1rem; font-weight: 400; color: rgb(153, 153, 153); padding-left: 25px;}
 /*
 ==============================================
 ==============================================
@@ -23,47 +19,34 @@
 ==============================================
 ==============================================
 */
+
 @media (max-width: 767px) {
 /* 
 ==============================================
-                    Header
+                Post
 ============================================== 
 */
-
-
-/* 
-==============================================
-                    Post
-============================================== 
-*/
-    .post ul a{display: block; justify-content: none;}
-    .post ul p {font-size: 0.75rem; font-weight: 400; color: rgb(153, 153, 153); padding-left: 0px;}
+    .post .news a {display: block; justify-content: none;}
+    .post .news p {font-size: 0.75rem; font-weight: 400; color: rgb(153, 153, 153); padding-left: 0px; margin-top: 5px;}
 }
-
+    
 @media (min-width: 768px) and (max-width: 991px) {
 /* 
 ==============================================
-                        Header
-============================================== 
-*/
-
-    
-/* 
-==============================================
                     Post
 ============================================== 
 */
-    .post ul a{display: block; justify-content: none;}
-    .post ul p {font-size: 0.75rem; font-weight: 400; color: rgb(153, 153, 153); padding-left: 0px;}
+    .post .news a {display: flex; justify-content: space-between;}
+    .post .news p {font-size: 0.75rem; font-weight: 400; color: rgb(153, 153, 153); padding-left: 0px;}
 }
-
+    
 /*
 ==============================================
 ==============================================
-            tablet and pc +
+                tablet and pc +
 ==============================================
 ==============================================
 */
 @media (min-width: 992px) and (max-width: 1024px) {
-    .post > ul {width: 100%; min-width: 950px;}
+    .post .news {width: 100%; min-width: 950px;}
 }
