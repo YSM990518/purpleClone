@@ -17,12 +17,11 @@ $("header a").on('click', function() {
     $("header a").removeClass("active");
     $("header a").removeClass("scroll-active");
     $(this).addClass("active");
-    $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
     let pageUrl = $(this).attr('href');
     if(pageUrl == '#') {
-        pageUrl = 'main.html';
+        $("header a").removeClass("scroll-active");
         $(".mains").addClass("active");
-        $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
+        pageUrl = 'main.html';
     }
     mobilSideMenu.classList.remove("mobile-active");
     bodyNoWork.classList.remove("mobile-active");
@@ -33,6 +32,7 @@ $("header a").on('click', function() {
     }
     loadBackFront(pageUrl);
     pageChange(pageUrl);
+    window.scroll({top: 0, left: 0, behavior: 'smooth'});
     // menuBar()
 });
 function pageChange(url) {
@@ -48,6 +48,7 @@ function pageChange(url) {
 }
 window.onpopstate = function() { 
     let name = history.state.data;
+    let scrolls = history.state.scroll;
     try{
         pageChange(name);
         loadActive(name);
@@ -56,23 +57,23 @@ window.onpopstate = function() {
 }
 function loadBackFront(url) {
     ++num;
-    var state = {id:num, data : url};              
+    var state = {id:num, data : url};          
     history.pushState(state, null, `#${url.split('.')[0]}`);
-    console.log(history.state.data, history.state.id);
+    console.log(history.state.data, history.state.id ,history.state.scroll);
 };
 function loadActive(data) {
     $("header a").removeClass("active");
     if(data == 'main.html') {
+        $(".head nav > ul li:nth-of-type(3) a").removeClass("active");
         $(".head nav > ul li:nth-of-type(1) a").addClass("active");
-        $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
     }
     if(data == 'news.html') {
         $(".head nav > ul li:nth-of-type(2) a").addClass("active");
-        $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
+        $(".moveToInfo li a").removeClass("active");
     }
     if(data == 'qna.html') {
         $(".head nav > ul li:nth-of-type(4) a").addClass("active");
-        $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
+        $(".moveToInfo li a").removeClass("active");
     }
 };
 function menuBar() {
@@ -91,6 +92,9 @@ function menuBar() {
         pageChange('qna.html');
         loadActive('qna.html');
     }
+};
+function moveScroll(userScroll) {
+    window.scrollBy({top: userScroll, left: 0, behavior: 'smooth'});
 };
 
 /*
@@ -224,6 +228,7 @@ upButton.onclick = function() {window.scroll({top: 0, left: 0, behavior: 'smooth
 const footerBtn = document.querySelector(".m-download");
 const isMobile = () => {
     var filter = "win16|win32|win64|mac|macintel";
+    const user = navigator.userAgent;
     let isCheck = false;
     if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
         isCheck = true;
@@ -231,8 +236,18 @@ const isMobile = () => {
     return isCheck;
 }
 if(!isMobile()) {
-    footerBtn.innerHTML = `<a href="javascript:void(0);'" class="m-download">PC 퍼플 다운로드</a>`
+    footerBtn.innerHTML = `<a href="sasf" class="m-download">PC 퍼플 다운로드</a>`
 }
 else {
     footerBtn.innerHTML = `<a href="https://go.onelink.me/ygWZ/b5e24536" class="m-download">퍼플 모바일 다운로드</a>`
 }
+console.log(isMobile())
+
+/*
+============================================== 
+==============================================
+                Scroll Remamber
+==============================================
+==============================================
+*/
+
