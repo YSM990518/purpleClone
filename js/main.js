@@ -50,14 +50,19 @@
     const menuBtn3 = document.querySelector(".head nav > ul > li > div a");
     const infoPage= document.querySelector(".game-url p");
     window.addEventListener('scroll', function() {
+        menuBtn[0].classList.remove("active");
+        menuBtn3.classList.remove("active");
         const changePoint = infoPage.offsetTop;
         if (changePoint < document.querySelector('html').scrollTop) {
-            menuBtn[0].classList.remove("scroll-active")
-            menuBtn3.classList.add("scroll-active")
+            menuBtn[0].classList.remove("scroll-active");
+            menuBtn3.classList.add("scroll-active");
         }
         else {
-            menuBtn[0].classList.add("scroll-active")
-            menuBtn3.classList.remove("scroll-active")
+            menuBtn[0].classList.add("scroll-active");
+            menuBtn3.classList.remove("scroll-active");
+        }
+        if(history.state.data == 'qna.html' || history.state.data == 'news.html') {
+            $("header a").removeClass("scroll-active");
         }
     });
 }());

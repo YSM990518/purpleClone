@@ -5,32 +5,24 @@
 ==============================================
 ==============================================
 */
-if(history.state.id > 1) {
-    pageChange(history.state.data);
-    loadActive(history.state.data);
-}
-if(history.state.id == 1 && history.state.data.indexOf("news.html") != -1) {
-    pageChange('news.html');
-    loadActive('news.html');
-}
-if(history.state.id == 1 && history.state.data.indexOf("qna.html") != -1) {
-    pageChange('qna.html');
-    loadActive('qna.html');
-}
-if(history.state.id == 1 && history.state.data.indexOf("main.html") != -1) {
+if(history.state == null) {
     pageChange('main.html');
+}
+else {
+    menuBar()
 }
 let num = 0;
 $("header a").on('click', function() {
     event.preventDefault();
     $("header a").removeClass("active");
+    $("header a").removeClass("scroll-active");
     $(this).addClass("active");
     $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
     let pageUrl = $(this).attr('href');
     if(pageUrl == '#') {
-    pageUrl = 'main.html';
-    $(".mains").addClass("active");
-    $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
+        pageUrl = 'main.html';
+        $(".mains").addClass("active");
+        $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
     }
     mobilSideMenu.classList.remove("mobile-active");
     bodyNoWork.classList.remove("mobile-active");
@@ -41,6 +33,7 @@ $("header a").on('click', function() {
     }
     loadBackFront(pageUrl);
     pageChange(pageUrl);
+    // menuBar()
 });
 function pageChange(url) {
     $("main").removeClass("active");
@@ -80,6 +73,23 @@ function loadActive(data) {
     if(data == 'qna.html') {
         $(".head nav > ul li:nth-of-type(4) a").addClass("active");
         $(".head nav > ul > li:nth-of-type(3) > ul > li a").removeClass("active");
+    }
+};
+function menuBar() {
+    if(history.state.id == 1 && history.state.data.indexOf("main.html") != -1) {
+        pageChange('main.html');
+    }
+    if(history.state.id > 1) {
+        pageChange(history.state.data);
+        loadActive(history.state.data);
+    }
+    if(history.state.id == 1 && history.state.data.indexOf("news.html") != -1) {
+        pageChange('news.html');
+        loadActive('news.html');
+    }
+    if(history.state.id == 1 && history.state.data.indexOf("qna.html") != -1) {
+        pageChange('qna.html');
+        loadActive('qna.html');
     }
 };
 
@@ -207,7 +217,22 @@ upButton.onclick = function() {window.scroll({top: 0, left: 0, behavior: 'smooth
 /*
 ============================================== 
 ==============================================
-                Main Scroll
+            Footer Download
 ==============================================
 ============================================== 
 */
+const footerBtn = document.querySelector(".m-download");
+const isMobile = () => {
+    var filter = "win16|win32|win64|mac|macintel";
+    let isCheck = false;
+    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+        isCheck = true;
+    } 
+    return isCheck;
+}
+if(!isMobile()) {
+    footerBtn.innerHTML = `<a href="javascript:void(0);'" class="m-download">PC 퍼플 다운로드</a>`
+}
+else {
+    footerBtn.innerHTML = `<a href="https://go.onelink.me/ygWZ/b5e24536" class="m-download">퍼플 모바일 다운로드</a>`
+}
